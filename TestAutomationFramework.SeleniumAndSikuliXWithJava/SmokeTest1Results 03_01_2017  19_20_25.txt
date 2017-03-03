@@ -1,0 +1,15 @@
+Attempting to open a new browser instance and the requested url.
+Attempting to open a new browser instance.
+New browser instance opened successfully.
+http://automationpractice.com/index.php opened in browser.
+Open URL test case result: true
+Successfully opened a new browser instance and the requested url.
+OpenPage: PASS
+Test Case Complete with Expected Result.
+Test Case Total Time: 27815 millisec
+Attempting to search for a product by keyword and confirm it is found base on an image.
+Unable to click on or type into element found in image file: images/SearchTextInputField.JPG
+Region: doFind: Image not loadable: images/SearchTextInputField.JPG
+SearchConfirmedWithImage: FAIL
+Test Case Failed to Complete
+Test Case Total Time: 5262 millisec

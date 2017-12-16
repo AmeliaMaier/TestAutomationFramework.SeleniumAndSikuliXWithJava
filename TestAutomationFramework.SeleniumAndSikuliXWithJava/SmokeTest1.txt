@@ -1,4 +1,0 @@
-OpenPage,Pass, http://automationpractice.com/index.php
-Login, Pass, TestyMcGee@TestAccount.net, ThisIsABadPassword
-SearchConfirmedWithImage, Pass, faded, FadedProductImage.JPG
-ClosePage, pass

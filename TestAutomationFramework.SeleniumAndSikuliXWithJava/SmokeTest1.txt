@@ -1,0 +1,2 @@
+OpenPage,Pass, http://www.google.com
+ClosePage, pass

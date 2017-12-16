@@ -6,7 +6,7 @@ import java.util.List;
 
 
 import StartChangesHereSwitchStatements.Run;
-import changeWithCare.ExcelAddressData;
+//import changeWithCare.ExcelAddressData;
 
 
 public class Main
@@ -63,7 +63,7 @@ public class Main
 		// confirm there are lines in the directory file
 		if (listOfTestSuites.isEmpty() || listOfTestSuites.size() == 0)
 		{
-			masterLog.writeToDirectoryResults("Error Location: COREMain.main; Directory File Failed. No Suites found. No Tests Run. Please check your file: " + directoryLocation);
+			masterLog.writeToDirectoryResults("Error Location: Main.main; Directory File Failed. No Suites found. No Tests Run. Please check your file: " + directoryLocation);
 			return;
 		}
 		// loop to read each test suite and fill in list of test cases for each
@@ -139,55 +139,7 @@ public class Main
 
 	public static void runExcelGroupTests(int iteratorListofTestsToRun)
 	{
-		ExcelAddressData currentAddressData = new ExcelAddressData();
-		currentAddressData.setExcelActualResult(true);
-		if (listOfTestCaseVariables.size() < 2)
-		{// must have at lease 2 (ExcelGroup & excelFileAddress)
-			masterLog.writeToSuiteResults("Error Location: COREMain.excelGroupTests; Excel file location missing. Please check your file: " + txtCurrentSuiteLocation + " on line: " + (iteratorListofTestsToRun + 1));
-			return;// returns back to main
-		}
-		// set excel reader location
-		ExcelReaderUtility.setFileLocation(listOfTestCaseVariables.get(1));
-		// iterate over each address in the excel file to run tests on them
-		for (int excelRowIterator = 1; excelRowIterator <= ExcelReaderUtility.getNumberOfRows(); excelRowIterator++)
-		{
-			currentAddressData.excelAddressData(ExcelReaderUtility.getRowData());
-			masterLog.writeToSuiteResults("----Address: " + currentAddressData.streetAddress + ", " + currentAddressData.city + ", " + currentAddressData.state + " " + currentAddressData.zip + "----"); // iterate
-			for (int testCaseIterator = iteratorListofTestsToRun + 1; testCaseIterator < listOfTestsToRun.size(); testCaseIterator++)
-			{
-				listOfTestCaseVariables = FileReaderUtility.splitLine(listOfTestsToRun.get(testCaseIterator));
-				if (listOfTestCaseVariables.size() < 2)
-				{
-					masterLog.writeToSuiteResults("Expected Test Result missing. Set to Pass by default.");
-					listOfTestCaseVariables.add("pass");
-				}
-				if (listOfTestCaseVariables.get(0).equalsIgnoreCase("ExcelGroup"))
-				{
-					masterLog.writeToSuiteResults("You cannot use ExcelGroup from within an ExcelGroup. No further tests run");
-					return;
-				}
-				masterLog.writeToSuiteResults("******Attempting Test Case: " + listOfTestCaseVariables.get(0) + "******");
-				getResults = run.runExcelSubTestCase(listOfTestCaseVariables, iteratorListofTestsToRun, testCaseIterator, currentAddressData, getResults, txtCurrentSuiteLocation, log);
-				masterLog.writeToSuiteResults(listOfTestCaseVariables.get(0) + ": " + getResults.getPassFail().toUpperCase());
-				masterLog.writeToSuiteResults(getResults.getResonForResult());
-				masterLog.writeToSuiteResults("Test Case Total Time: " + getResults.getTotalTime() + " millisecs");
-				masterLog.writeToSuiteResults("******Finished Test Case: " + listOfTestCaseVariables.get(0) + "******");
-
-				// if the test case failed, no further tests will be run for the
-				// current address
-				if (!getResults.getTestResult()) break;
-			} // output current address' final results to suite result file
-			masterLog.writeToSuiteResults("----Address: " + currentAddressData.streetAddress + ", " + currentAddressData.city + ", " + currentAddressData.state + " " + currentAddressData.zip + ": " + getResults.getPassFail().toUpperCase() + "----");
-			// the address' overall results are equal to the final test case's
-			// result
-			currentAddressData.setActualResults(getResults.getActualResult());
-			currentAddressData.setTestCaseCompleted(getResults.getTestCaseCompleted());
-			currentAddressData.setExcelActualResult();
-			// switch to excel results file and output current address' general
-			// result
-			masterLog.writeToExcelResults(currentAddressData.streetAddress + ", " + currentAddressData.city + ", " + currentAddressData.state + " " + currentAddressData.zip + " | " + currentAddressData.expectedResult.toUpperCase() + " | " + currentAddressData.getAddressActualResult().toUpperCase() + " | " + currentAddressData.getTestStatus().toUpperCase() + " | " + currentAddressData.getPassFail().toUpperCase() + " | " + currentAddressData.getTotalTime());
-		}
-		masterLog.writeToDirectoryResults("Excel Grouped Tests: " + currentAddressData.getExcelActualResult().toUpperCase());
-		if(!currentAddressData.excelActualResult)getResults.setActualResults(currentAddressData.excelActualResult);
+		//redacted - this has to be reorganized per project and contained project specific info
+	
 	}
 }

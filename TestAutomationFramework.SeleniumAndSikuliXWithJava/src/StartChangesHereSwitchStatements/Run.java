@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import FinishChangesHereTestCases.*;
-import changeWithCare.ExcelAddressData;
+//import changeWithCare.ExcelAddressData;
 import doNotChange.GetResults;
 import doNotChange.Log;
 import doNotChange.TestCaseInterface;
@@ -27,26 +27,11 @@ public class Run
 	 *            level), testsuite+ExcelResults (mid level), and
 	 *            testsuiteResults (lowest and most detailed level)
 	 */
-	public GetResults runExcelSubTestCase(List<String> listOfTestCaseVariables, int iteratorListofTestsToRun, int testCaseIterator, ExcelAddressData currentAddressData,GetResults getResults,String txtCurrentSuiteLocation, Log log)
-	{
-		switch (listOfTestCaseVariables.get(0).toLowerCase())
-		{
-			case "openpage":
-				listOfTestCaseVariables.addAll(Arrays.asList(currentAddressData.coreURL));
-				getResults = runTestCase(getResults,listOfTestCaseVariables, txtCurrentSuiteLocation, iteratorListofTestsToRun, log);
-				break;
-			case "closepage":
-				getResults = runTestCase(getResults,listOfTestCaseVariables, txtCurrentSuiteLocation, iteratorListofTestsToRun, log);
-				break;
-			default:
-				log.write("Error Location: COREMain.main; The Test on line: " + (testCaseIterator + 1) + " in file: " + txtCurrentSuiteLocation + " is not recognized.");
-				getResults.setActualResults(false);
-				getResults.setExpectedResults("pass");
-				getResults.setTestCaseCompleted(false);
-				break;
-		}// switch(listSplitTestInput.get(0).toLowerCase())
-		return getResults;
-	}
+//	public GetResults runExcelSubTestCase(List<String> listOfTestCaseVariables, int iteratorListofTestsToRun, int testCaseIterator, ExcelAddressData currentAddressData,GetResults getResults,String txtCurrentSuiteLocation, Log log)
+//	{
+		//redacted - this has to be reorganized per project and contained project specific info
+		
+//	}
 
 	/**
 	 * 
@@ -70,14 +55,8 @@ public class Run
 			case "closepage":
 				testCaseInterface = new CloseBrowser(log);
 				break;
-			case "login":
-				testCaseInterface = new Login(log);
-				break;
-			case "searchconfirmedwithimage":
-				testCaseInterface = new SearchConfirmedWithImage(log);
-				break;
 			default:
-				log.write("Error Location: COREMain.main; The Test on line: " + (iteratorListofTestsToRun + 1) + " in file: " + txtCurrentSuiteLocation + " is not recognized.");
+				log.write("Error Location: Run.runTestCase; The Test on line: " + (iteratorListofTestsToRun + 1) + " in file: " + txtCurrentSuiteLocation + " is not recognized.");
 				testCaseRecognized = false;
 				break;
 		}// switch(listSplitTestInput.get(0).toLowerCase())
